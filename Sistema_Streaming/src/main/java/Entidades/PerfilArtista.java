@@ -3,30 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Entidades;
+
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
+
 /**
  *
  * @author USER
  */
 @Entity
-@Table( )
+@Table()
 public class PerfilArtista {
-    
+
     @Id
     private Long idPerfil;
-    
+
+    @Temporal(TemporalType.DATE)
     @Column()
     private Date fechaRegistro;
-    
+
     @Column()
     private String userName;
-    
+
     @Column()
-    private Long Segidores;
-    
-    @OneToMany(mappedBy = "perfil",cascade = CascadeType.ALL)
+    private Long segidores;
+
+    @OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL)
     private List<Artista> listaArtistas;
     
     @ManyToOne(cascade = CascadeType.ALL)
@@ -35,54 +38,71 @@ public class PerfilArtista {
 
     public PerfilArtista() {
     }
+    
+    private PerfilArtista(Builder builder){
+        this.fechaRegistro = builder.fechaRegistro;
+        this.userName = builder.userName;
+        this.segidores = builder.segidores;
+        this.listaArtistas = builder.listaArtistas;
+        this.plataforma = builder.plataforma;
+    }
 
     public Long getIdPerfil() {
         return idPerfil;
     }
-
-    public void setIdPerfil(Long idPerfil) {
-        this.idPerfil = idPerfil;
-    }
-
     public Date getFechaRegistro() {
         return fechaRegistro;
     }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
     public String getUserName() {
         return userName;
     }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public Long getSegidores() {
-        return Segidores;
+        return segidores;
     }
-
-    public void setSegidores(Long Segidores) {
-        this.Segidores = Segidores;
-    }
-
     public List<Artista> getListaArtistas() {
         return listaArtistas;
     }
-
-    public void setListaArtistas(List<Artista> listaArtistas) {
-        this.listaArtistas = listaArtistas;
-    }
-
     public Plataforma getPlataforma() {
         return plataforma;
     }
+    
+    
 
-    public void setPlataforma(Plataforma plataforma) {
-        this.plataforma = plataforma;
+    public static class Builder {
+
+        private Date fechaRegistro;
+        private String userName;
+        private Long segidores;
+        private List<Artista> listaArtistas;
+        private Plataforma plataforma;
+        
+        public Builder fechaRegistro (Date fechaRegistro){
+            this.fechaRegistro = fechaRegistro;
+            return this;
+        }
+        
+        public Builder userName (String userName){
+            this.userName = userName;
+            return this;
+        }
+        
+        public Builder segidores (Long segidores){
+            this.segidores = segidores;
+            return this;
+        }
+        
+        public Builder listaArtistas (List<Artista> listaArtistas){
+            this.listaArtistas = listaArtistas;
+            return this;
+        }
+        
+        public Builder plataforma (Plataforma plataforma){
+            this.plataforma = plataforma;
+            return this;
+        }
+        
+        public PerfilArtista build(){
+            return new PerfilArtista(this);
+        }
     }
-    
-    
 }
