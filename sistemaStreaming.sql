@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS sistemaStreaming;
+CREATE DATABASE IF NOT EXISTS sistemaStreaming;
