@@ -4,10 +4,17 @@
  */
 package Interface;
 
+import Entidades.Plataforma;
+import java.util.List;
+
 /**
  *
  * @author USER
  */
 public interface IPlataformaDAO {
-    
+    boolean insertarPlataforma ( Plataforma p) ;
+    boolean actualizarPlataforma ( Plataforma p) ;
+    boolean eliminarPlataforma ( Long id ) ;
+    List<Plataforma> consultarTodos () ;
+    List<Plataforma> consultarLike () ;
 }
