@@ -4,10 +4,12 @@
  */
 package DAOs;
 
+import Interface.IPerfilArtistaDAO;
+
 /**
  *
  * @author USER
  */
-public class PerfilArtistaDAO {
+public class PerfilArtistaDAO implements IPerfilArtistaDAO {
     
 }
